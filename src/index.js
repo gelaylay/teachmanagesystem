@@ -1,14 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+
+import FirstPage from './1stPage';
+import UserAuthen from './userAuthentication'
+import SubjectArea from './subjectArea'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Router>
+  <Routes>
+    <Route path="/teachmanage" element={<FirstPage />} />
+     <Route path="/signin_signup" element={<UserAuthen />} />
+     <Route path ="/subject_area" element={<SubjectArea/>}/>
+  </Routes>
+</Router>
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
