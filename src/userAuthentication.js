@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button, Grid, Tab, Typography,} from '@mui/material';
 import TabPanel from '@mui/lab/TabPanel';
+import './style.css';
 import { TabContext, TabList } from '@mui/lab';
 import { useNavigate } from 'react-router-dom';
 

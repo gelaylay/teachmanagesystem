@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Righteous';
+    src: local('Righteous'), url('./Fonts/Righteous.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'PlayfairDisplay';
+    src: local('PlayfairDisplay'), url('./Fonts/PlayfairDisplay.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Poppins';
+    src: local('Poppins'), url('./Fonts/Poppins.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Courier';
+    src: local('Courier'), url('./Fonts/CourierPrime-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Lateef';
+    src: local('Lateef'), url('./Fonts/Lateef-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Vesper';
+    src: local('Vesper'), url('./Fonts/VesperLibre-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Bauhus';
+    src: local('Bauhus'), url('./Fonts/Bauhus.otf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }

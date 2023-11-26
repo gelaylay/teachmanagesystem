@@ -6,6 +6,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
 import FolderIcon from '@mui/icons-material/Folder';
 
+
+import './style.css';
+
 function App() {
   const [open, setOpen] = React.useState(false);
 
