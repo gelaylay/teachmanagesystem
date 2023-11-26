@@ -1,9 +1,3 @@
-@font-face {
-    font-family: 'Righteous';
-    src: local('Righteous'), url('./Fonts/Righteous.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-  }
 
   @font-face {
     font-family: 'PlayfairDisplay';
@@ -18,6 +12,21 @@
     font-weight: 400;
     font-style: normal;
   }
+  /* for the details chuchu na font */
+  @font-face {  
+    font-family: 'Arimo';
+    src: local('Arimo'), url('./Fonts/Arimo.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'WorkSans';
+    src: local('WorkSans'), url('./Fonts/WorkSans.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
   @font-face {
     font-family: 'Courier';
     src: local('Courier'), url('./Fonts/CourierPrime-Regular.ttf') format('truetype');

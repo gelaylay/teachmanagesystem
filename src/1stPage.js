@@ -41,12 +41,12 @@ function App() {
           justifyContent: 'right',
           marginBottom:'20vh'
         }}>
-          <Fab variant="extended" color="#d9d9d9" sx={{ fontSize: '1rem', marginRight: '10px', marginTop: '10px', fontFamily: 'Righteous' }} onClick={handleAboutUsClick}>
+          <Fab variant="extended" color="#d9d9d9" sx={{ fontSize: '1rem', marginRight: '10px', marginTop: '10px', fontFamily: 'Roboto' }} onClick={handleAboutUsClick}>
             About Us
           </Fab>
 
           <Link component={RouterLink} to="/signin_signup" underline="none">
-          <Fab variant="extended" color="#d9d9d9" sx={{ fontSize: '1rem', marginTop: '10px', marginRight: '10px', fontFamily: 'Righteous' }}>
+          <Fab variant="extended" color="#d9d9d9" sx={{ fontSize: '1rem', marginTop: '10px', marginRight: '10px', fontFamily: 'Roboto' }}>
             Get Started
           </Fab>
           </Link>

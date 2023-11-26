@@ -23,22 +23,22 @@ const AboutUsModal = ({ open, handleClose }) => {
                 />
                 </Grid>
                 <Grid item xs={6}>
-                <Box sx={{mt:'75px',mr:'15px',bgcolor: 'rgba(115, 231, 226, 0)', padding:'6px',textAlign: 'justify', fontFamily:'Poppins', fontSize:'15px',}}>
+                <Box sx={{mt:'75px',mr:'15px',bgcolor: 'rgba(115, 231, 226, 0)', padding:'6px',textAlign: 'justify', fontFamily:'WorkSans', fontSize:'15px',}}>
                     <p>At TeachManage, we're on a mission to revolutionize the way teachers manage resources and collaborate in the educational landscape. Our system is a testament to our passion for enhancing the teaching experience and fostering effective collaboration among educators.</p>
                 </Box>
                 </Grid>
                 <Grid item xs={6} sx={{ml:'50px'}}>
-                <Box sx={{bgcolor: 'rgba(115, 231, 226, 0)', padding:'6px',textAlign: 'justify', fontFamily:'Poppins', fontSize:'15px'}}>
+                <Box sx={{bgcolor: 'rgba(115, 231, 226, 0)', padding:'6px',textAlign: 'justify', fontFamily:'WorkSans', fontSize:'15px'}}>
                     <p>TeachManage is more than just a resource management system; its a dynamic platform designed for educators. Our system empowers teachers to seamlessly organize, collaborate, and innovate in their teaching journey. From subject folder management to real-time collaboration on worksheets, TeachManage simplifies the complexities of education resource management.</p>
                 </Box>
                 </Grid>
-                <Grid item xs={4} sx={{ml:'30px', mt:'74px'}}>
-                <Typography style={{mr:'30px',fontFamily: 'PlayfairDisplay',display: 'flex', justifyContent: 'center', alignItems: 'center', mt:'25px', fontSize:'38px', fontWeight:'bolder', textShadow:'40px' }}>
+                <Grid item xs={4} sx={{ml:'30px', mt:'50px'}}>
+                <Typography style={{mr:'30px',fontFamily: 'PlayfairDisplay',display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize:'38px'}}>
                     Our System
                 </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                <Typography style={{mr:'30px',fontFamily: 'PlayfairDisplay',display: 'flex', justifyContent: 'center', alignItems: 'center', mt:'25px', fontSize:'38px', fontWeight:'bolder', textShadow:'40px' }}>
+                <Typography style={{mr:'30px',fontFamily: 'PlayfairDisplay',display: 'flex', justifyContent: 'center', alignItems: 'center', mt:'25px', fontSize:'38px', }}>
                     Meet Our Team
                 </Typography>
                 </Grid>
@@ -50,13 +50,13 @@ const AboutUsModal = ({ open, handleClose }) => {
                             <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center'}}>
                                 <Avatar alt="Angela" src="Images/Angela.jpg" sx={{mt:'3vh', width: '15vh', height: '15vh' }}/>
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Quicksand', fontSize:'16px', fontWeight:'bold'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Arimo', fontSize:'16px', fontWeight:'bold'}}>
                                 Angela Madaya
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Quicksand',fontSize:'14px', fontStyle:'Italic'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Arimo',fontSize:'14px', }}>
                                 UI Designer
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center',textAlign: 'center',fontFamily:'Quicksand', fontSize:'14px', fontStyle:'Italic'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center',textAlign: 'center',fontFamily:'Arimo', fontSize:'14px', }}>
                                 Full Stack Developer
                             </Grid>
                         </Grid>
@@ -68,13 +68,13 @@ const AboutUsModal = ({ open, handleClose }) => {
                             <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center'}}>
                                 <Avatar alt="Anne" src="Images/Anne.png" sx={{mt:'3vh', width: '15vh', height: '15vh' }}/>
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Quicksand', fontSize:'16px', fontWeight:'bold'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Arimo', fontSize:'16px', fontWeight:'bold'}}>
                                 Anne Jenel Ilosorio
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Quicksand',fontSize:'14px', fontStyle:'Italic'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Arimo',fontSize:'14px', }}>
                                 UI Designer
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center',textAlign: 'center',fontFamily:'Quicksand', fontSize:'14px', fontStyle:'Italic'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center',textAlign: 'center',fontFamily:'Arimo', fontSize:'14px',}}>
                                 Full Stack Developer
                             </Grid>
                         </Grid>
@@ -86,13 +86,13 @@ const AboutUsModal = ({ open, handleClose }) => {
                             <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center'}}>
                                 <Avatar alt="Julianna" src="Images/Julliana.png" sx={{mt:'3vh', width: '15vh', height: '15vh' }}/>
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Quicksand', fontSize:'16px', fontWeight:'bold'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Arimo', fontSize:'16px', fontWeight:'bold'}}>
                                 Julianna Belle Tabo
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Quicksand',fontSize:'14px', fontStyle:'Italic'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Arimo',fontSize:'14px',}}>
                                 UI Designer
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center',textAlign: 'center',fontFamily:'Quicksand', fontSize:'14px', fontStyle:'Italic'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center',textAlign: 'center',fontFamily:'Arimo', fontSize:'14px',}}>
                                 Backend Developer
                             </Grid>
                         </Grid>
@@ -104,13 +104,13 @@ const AboutUsModal = ({ open, handleClose }) => {
                             <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center'}}>
                                 <Avatar alt="Mark" src="Images/Mark.png" sx={{mt:'3vh', width: '15vh', height: '15vh' }}/>
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Quicksand', fontSize:'16px', fontWeight:'bold'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Arimo', fontSize:'16px', fontWeight:'bold'}}>
                                 Mark Angelo Bagiuon
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Quicksand',fontSize:'14px', fontStyle:'Italic'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center', fontFamily:'Arimo',fontSize:'14px', }}>
                                 UI Designer
                             </Grid>
-                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center',textAlign: 'center',fontFamily:'Quicksand', fontSize:'14px', fontStyle:'Italic'}}>
+                            <Grid item xs={12} sx={{display:'center', justifyContent:'center',alignContent:'center',textAlign: 'center',fontFamily:'Arimo', fontSize:'14px', }}>
                                 Backend Developer
                             </Grid>
                         </Grid>

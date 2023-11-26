@@ -3,12 +3,12 @@ import { Box, Button, Grid, Tab, Typography,} from '@mui/material';
 import TabPanel from '@mui/lab/TabPanel';
 import './style.css';
 import { TabContext, TabList } from '@mui/lab';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 function App() {
-  const [value, setValue] = useState('1');
-  const [welcomeText, setWelcomeText] = useState('Welcome Back User!');
-  const navigate = useNavigate();
+  const [value, setValue] = useState('2');
+  const [welcomeText, setWelcomeText] = useState('Sign Up for Free!');
+  // const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -50,7 +50,7 @@ function App() {
           <Grid item xs={5} sx={{bgcolor:'#D9D9D9', height:'100vh'}}>
             <Typography
               style={{
-                fontFamily: 'Georgia',
+                fontFamily: 'PlayfairDisplay',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -86,7 +86,7 @@ function App() {
                     <Tab
                         sx={{
                           fontSize: '17px',
-                          fontFamily: 'Vesper',
+                          fontFamily: 'Poppins',
                           color: 'gray',
                           backgroundColor: 'whitesmoke',
                           width:'25vh',
@@ -97,16 +97,17 @@ function App() {
                           '&.Mui-selected': {
                             backgroundColor: '#359DD9',
                             color: 'white',
-                            fontWeight:'bold' // Change the background color when selected
+                            // Change the background color when selected
                           },
                         }}
                           label="Sign In"
                           value='1'
                       />
+
                       <Tab
                         sx={{
                           fontSize: '17px',
-                          fontFamily: 'Vesper',
+                          fontFamily: 'Poppins',
                           height:'5vh',
                           color: 'gray',
                           backgroundColor: 'whitesmoke',
@@ -116,7 +117,7 @@ function App() {
                           '&.Mui-selected': {
                             backgroundColor: '#359DD9',
                             color: 'white', 
-                            fontWeight:'bold'// Change the background color when selected
+                           // Change the background color when selected
                           },
                         }}
                           label="Create Account"
@@ -142,7 +143,7 @@ function App() {
                           width:'51vh',
                           marginBottom:'10px',
                           fontSize:'16px',
-                          fontFamily:'Courier'
+                          fontFamily:'Arimo'
                         }}
                       />
                       <br>
@@ -160,7 +161,7 @@ function App() {
                           height:'35px',
                           width:'51vh',
                           fontSize:'16px',
-                          fontFamily:'Courier'
+                          fontFamily:'Poppins'
                         }}
                       />
                       <br>
@@ -170,15 +171,15 @@ function App() {
                         sx={{ 
                           mt: 3, 
                           mb: 2 ,
-                          ml:'34vh', 
+                          ml:'36vh', 
                           bgcolor:'#241571', 
                           color:'white', 
-                          fontSize:'22px', 
-                          paddingLeft:'6vh', 
-                          paddingRight:'6vh',
+                          fontSize:'19px', 
+                          paddingLeft:'4.5vh', 
+                          paddingRight:'4.5vh',
                           paddingTop:'0.3vh',
                           paddingBottom:'0.3vh',
-                          fontFamily: 'Lateef', 
+                          fontFamily: 'Poppins', 
                           '&:hover': {
                             backgroundColor: '#E39ff6',
                             color: '#241571', 
@@ -211,7 +212,7 @@ function App() {
                           width:'51vh',
                           marginBottom:'10px',
                           fontSize:'16px',
-                          fontFamily:'Courier'
+                          fontFamily:'Arimo'
                         }}
                       />
                   <input
@@ -227,7 +228,7 @@ function App() {
                           width:'51vh',
                           marginBottom:'10px',
                           fontSize:'16px',
-                          fontFamily:'Courier'
+                          fontFamily:'Arimo'
                         }}
                       />
                       <br>
@@ -245,7 +246,7 @@ function App() {
                           height:'35px',
                           width:'51vh',
                           fontSize:'16px',
-                          fontFamily:'Courier'
+                          fontFamily:'Arimo'
                         }}
                       />
                       <br>
@@ -256,15 +257,15 @@ function App() {
                         sx={{ 
                           mt: 3, 
                           mb: 2 , 
-                          ml:'34vh', 
+                          ml:'35vh', 
                           bgcolor:'#241571', 
                           color:'white', 
-                          fontSize:'22px', 
-                          paddingLeft:'6vh', 
-                          paddingRight:'6vh',
+                          fontSize:'19px', 
+                          paddingLeft:'4.5vh', 
+                          paddingRight:'4.5vh',
                           paddingTop:'0.3vh', 
                           paddingBottom:'0.3vh', 
-                          fontFamily: 'Lateef',
+                          fontFamily: 'Poppins',
                           '&:hover': {
                             backgroundColor: '#E39ff6',
                             color: '#241571', 
