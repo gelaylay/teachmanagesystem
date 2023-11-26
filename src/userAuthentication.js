@@ -3,17 +3,155 @@ import { Box, Button, Grid, Tab, Typography,} from '@mui/material';
 import TabPanel from '@mui/lab/TabPanel';
 import './style.css';
 import { TabContext, TabList } from '@mui/lab';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [value, setValue] = useState('2');
   const [welcomeText, setWelcomeText] = useState('Sign Up for Free!');
-  // const navigate = useNavigate();
-
+  const [isLoading, setIsLoading] = useState(true)
+  const navigate = useNavigate();
+  const [isUsernameUnique,setIsUsernameUnique] = useState(true);
+  const [passwordValid, setPasswordValid] = useState(true);
+  const [isUsernameAndPasswordCorrect, setIsUsernameAndPasswordCorrect] = useState(true);
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setWelcomeText(newValue === '2' ? 'Sign Up for Free!' : 'Welcome Back User!');
+  
+    // Clear input fields when switching tabs
+    const nUsernameElement = document.getElementById("nUsername");
+    const nPasswordElement = document.getElementById("nPassword");
+    const emailAddressElement = document.getElementById("emailAddress");
+  
+    if (nUsernameElement && nPasswordElement && emailAddressElement) {
+      nUsernameElement.value = '';
+      nPasswordElement.value = '';
+      emailAddressElement.value = '';
+    }
+  
+
+    setIsUsernameUnique(true); // Reset the isUsernameUnique state
+    setPasswordValid(true);
+    setIsUsernameAndPasswordCorrect(true);
   };
+  const validatePassword = (password) => {
+    // Password should consist of lowercase and uppercase letters,
+    // contain at least one digit, and no special characters
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]*$/;
+    return passwordRegex.test(password);
+  };
+
+async function createNewUser(event) {
+  event.preventDefault(); // Prevent default form submission behavior
+
+  setIsLoading(true);
+  const newUsername = document.getElementById("nUsername").value;
+  const newPassword = document.getElementById("nPassword").value;
+  const email = document.getElementById("emailAddress").value;
+
+    console.log('newUsername:', newUsername);
+    console.log('newPassword:', newPassword);
+    console.log('email:', email);
+
+
+  if (newUsername && newPassword && email) {
+    try {
+      const isUsernameUnique = await checkUsernameUniqueness(newUsername);
+      console.log('isUsernameUnique:', isUsernameUnique);
+
+      setIsUsernameUnique(isUsernameUnique);
+
+      if (isUsernameUnique) {
+        if(validatePassword(newPassword)){
+        const response = await fetch('http://localhost:8080/user/createAccount', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            uname: newUsername, //si uname,pword,email kay sa akong server(eclipse gkan), si newUsername dri sa java
+            pword: newPassword,
+            email: email,
+          }),
+        });
+
+        if (response.ok) {
+          // Redirect to the subject_area after successful account creation
+          navigate('/subject_area');
+        } else {
+          // Handle error scenarios
+          console.error('Account creation failed');
+        }
+      }else{
+        setPasswordValid(validatePassword(newPassword));
+      }
+    }
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  } else {
+    alert('Please enter your Email Address, username, and password.');
+    setIsLoading(false);
+  }
+}
+
+async function checkUsernameUniqueness(username) {
+  try {
+    const response = await fetch(`http://localhost:8080/user/checkUsername?username=${username}`);
+
+    if (response.ok) {
+      const data = await response.json();
+      return data.isUnique !== undefined ? data.isUnique: false;
+    } else {
+      console.error('Error checking username uniqueness');
+      return false;
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    return false;
+  }
+}
+
+async function signIn(event) {
+  event.preventDefault();
+
+  setIsLoading(true);
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if (username && password) {
+    try {
+      // Assuming you have an endpoint for user authentication
+      const response = await fetch('http://localhost:8080/user/signIn', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          uname: username,
+          pword: password,
+        }),
+      });
+
+      if (response.ok) {
+        // Redirect to the subject_area after successful sign-in
+        navigate('/subject_area');
+      } else {
+        setIsUsernameAndPasswordCorrect(false);
+      }
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  } else {
+    alert('Please enter your username and password.');
+    setIsLoading(false);
+  }
+}
+
 
   return (
     <div
@@ -127,14 +265,14 @@ function App() {
                   <TabPanel value="1">
                     <Box 
                       component="form" 
-                      // onSubmit={handleSubmit} 
+                       onSubmit={signIn} 
                       noValidate 
                       sx={{ mt: 1 }}>
                       <input
                         margin="normal"
                         id="username"
                         placeholder="Username"
-                        name="username"
+                         name="username" // para sa link mo appear ni
                         autoComplete="username"
                         autoFocus
                         style={{
@@ -143,7 +281,8 @@ function App() {
                           width:'51vh',
                           marginBottom:'10px',
                           fontSize:'16px',
-                          fontFamily:'Arimo'
+                          fontFamily:'Arimo',
+                          borderColor: isUsernameAndPasswordCorrect ? '' : 'red'
                         }}
                       />
                       <br>
@@ -151,7 +290,7 @@ function App() {
                       <input
                         margin="normal"
                         required
-                        name="password"
+                        name="password" // para sa link mo appear ni
                         placeholder="Password"
                         type="password"
                         id="password"
@@ -161,11 +300,18 @@ function App() {
                           height:'35px',
                           width:'51vh',
                           fontSize:'16px',
-                          fontFamily:'Poppins'
+                          fontFamily:'Arimo',
+                          borderColor: isUsernameAndPasswordCorrect ? '' : 'red'
+
                         }}
                       />
                       <br>
                       </br>
+                      {!isUsernameAndPasswordCorrect && (
+                        <Typography style={{ color: 'red', marginLeft: '4vh', fontSize: '14px', fontStyle:'italic', mt:'5px' }}>
+                          Incorrect username or password. Please try again.
+                        </Typography>
+                      )}
                       <Button
                         type="submit"
                         sx={{ 
@@ -197,13 +343,13 @@ function App() {
                   </TabPanel>
                   <TabPanel value="2">
                   <Box component="form" 
-                    // onSubmit={handleSubmit}
+                     onSubmit={createNewUser}
                     noValidate sx={{ mt: 1}}>
                   <input
                         margin="normal"
                         id="emailAddress"
                         placeholder="Email Address"
-                        name="emailAddress"
+                      //name="emailAddress"  // para sa link mo appear ni
                         autoComplete="emailAddress"
                         autoFocus
                         style={{
@@ -215,11 +361,17 @@ function App() {
                           fontFamily:'Arimo'
                         }}
                       />
+
+                  {!isUsernameUnique && (
+                    <Typography style={{ color: 'red', marginLeft: '4vh', fontSize: '14px', fontStyle:'italic',mt:'10px' }}>
+                      Username already exists. Please try another one.
+                    </Typography>
+                  )}
                   <input
                         margin="normal"
-                        id="username"
+                        id="nUsername"
                         placeholder="Username"
-                        name="username"
+                        name="username" // para sa link mo appear ni
                         autoComplete="username"
                         autoFocus
                         style={{
@@ -228,36 +380,46 @@ function App() {
                           width:'51vh',
                           marginBottom:'10px',
                           fontSize:'16px',
-                          fontFamily:'Arimo'
+                          fontFamily:'Arimo',
+                          borderColor:isUsernameUnique ? '': 'red',
                         }}
                       />
                       <br>
                       </br>
+
                       <input
                         margin="normal"
                         required
-                        name="password"
+                        // name="password"  // para sa link mo appear ni
                         placeholder="Password"
                         type="password"
-                        id="password"
+                        id="nPassword"
                         autoComplete="current-password"
                         style={{
                           marginLeft:'4vh',
+                          margineTop:'10px',
                           height:'35px',
                           width:'51vh',
                           fontSize:'16px',
-                          fontFamily:'Arimo'
+                          fontFamily:'Arimo',
+                          borderColor: passwordValid ? '' : 'red',
                         }}
                       />
+                      {passwordValid ? null : (
+                        <Typography style={{ color: 'red', marginLeft: '4vh', fontSize: '14px', fontStyle: 'italic',  }}>
+                          Password should consist of lowercase and uppercase letters, contain at least one digit
+                        </Typography>
+                      )}
                       <br>
                       </br>
            
-                      <Button
+                      <Button 
                         type="submit"
                         sx={{ 
-                          mt: 3, 
+                          mt:1,
                           mb: 2 , 
                           ml:'35vh', 
+                          display:'block',
                           bgcolor:'#241571', 
                           color:'white', 
                           fontSize:'19px', 
