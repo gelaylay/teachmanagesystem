@@ -4,7 +4,6 @@ import { Link, Link as RouterLink } from 'react-router-dom';
 
 import Aboutus from './aboutus';
 
-import './style.css';
 
 function App() {
   const [showAboutUs, setShowAboutUs] = useState(false);

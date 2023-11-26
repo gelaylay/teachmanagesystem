@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Button, Grid, Tab, Typography,} from '@mui/material';
 import TabPanel from '@mui/lab/TabPanel';
-import './style.css';
 import { TabContext, TabList } from '@mui/lab';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,57 +14,6 @@ function App() {
     setWelcomeText(newValue === '2' ? 'Sign Up for Free!' : 'Welcome Back User!');
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-
-    try {
-      if (value === '1') {
-        const response = await fetch('http://localhost:8080/User/Login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            userName: data.get('username'),
-            userPass: data.get('password'),
-          }),
-        });
-  
-        if (response.ok) {
-          // Redirect to the subject_area after successful login
-          navigate('/subject_area');
-        } else {
-          // Handle error scenarios for login
-          console.error('Login failed');
-        }
-      } else if (value === '2') {
-        // Logic for sign-up, which is already in your code
-        const response = await fetch('http://localhost:8080/User/CreateAccount', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: data.get('emailAddress'),
-          userName: data.get('username'),
-          userPass: data.get('password'),
-        }),
-      });
-
-      if (response.ok) {
-        // Redirect to the subject_area after successful account creation
-        navigate('/subject_area');
-      } else {
-        // Handle error scenarios
-        console.error('Account creation failed');
-      }
-      }
-    } catch (error) {
-      console.error('Error during login or sign-up', error);
-
-    }
-  };
   return (
     <div
         style={{
@@ -175,7 +123,11 @@ function App() {
                       />
                   </TabList>
                   <TabPanel value="1">
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                    <Box 
+                      component="form" 
+                      // onSubmit={handleSubmit} 
+                      noValidate 
+                      sx={{ mt: 1 }}>
                       <input
                         margin="normal"
                         id="username"
@@ -213,7 +165,7 @@ function App() {
                       <br>
                       </br>
                       <Button
-                      type="submit"
+                        type="submit"
                         sx={{ 
                           mt: 3, 
                           mb: 2 ,
@@ -242,7 +194,9 @@ function App() {
                     </Box>
                   </TabPanel>
                   <TabPanel value="2">
-                  <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1}}>
+                  <Box component="form" 
+                    // onSubmit={handleSubmit}
+                    noValidate sx={{ mt: 1}}>
                   <input
                         margin="normal"
                         id="emailAddress"
