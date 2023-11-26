@@ -83,10 +83,10 @@ function App() {
                       alt="logo"
                     />
                   </IconButton>
-                  <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{fontFamily: 'Bauhus', fontWeight:'bold'}}>
+                  <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{fontFamily: 'Bauhus'}}>
                       TeachManage
                   </Typography>
-                  <Typography variant="h6" component="div" sx={{ flexGrow: 1.3 }} style={{fontFamily:'Poppins'}}>
+                  <Typography variant="h6" component="div" sx={{ flexGrow: 1.3 }} style={{fontFamily:'WorkSans'}}>
                       Manage Subject Area
                   </Typography>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
@@ -102,12 +102,12 @@ function App() {
                     sx={{
                       bgcolor:'rgba(82, 178, 191, 0.8)',
                       color:'white',
-                      fontSize:'2vh',
-                      fontFamily:'Poppins', 
+                      fontSize:'2.3vh',
+                      fontFamily:'Arimo', 
                       border:'solid 1px black', 
                       ml:'6vh',
-                      paddingLeft:'7vh', 
-                      paddingRight:'7vh',
+                      paddingLeft:'6vh', 
+                      paddingRight:'6vh',
                       borderRadius:'3vh',
                       textTransform: 'none',
                       '&:hover': {
@@ -125,8 +125,8 @@ function App() {
                   sx={{
                     bgcolor:'rgba(82, 178, 191, 0.8)',
                     color:'white',
-                    fontSize:'2vh',
-                    fontFamily:'Poppins', 
+                    fontSize:'2.3vh',
+                    fontFamily:'Arimo', 
                     border:'solid 1px black',
                     paddingLeft:'4vh', 
                     paddingRight:'4vh',
@@ -147,7 +147,7 @@ function App() {
                   <Dialog open={open} onClose={handleClose}>
                   <DialogContent sx={{ bgcolor: 'rgba(82, 178, 191, 0.7)',}}>
                   <Stack direction="row" spacing={2} sx={{mt:'10px',display:'center',justifyContent:'center',mb:'12px'}}>
-                      <Chip icon={<FolderIcon />} label="Add New Subject" sx={{padding:'20px', fontSize:'14px', bgcolor:'#359DD9'}} />
+                      <Chip icon={<FolderIcon />} label="Add New Subject" sx={{padding:'20px', fontSize:'14px', bgcolor:'#359DD9', fontFamily:'WorkSans'}} />
                   </Stack>
                       <input  
                         variant="outlined" 
@@ -157,6 +157,7 @@ function App() {
                           fontSize: '14px', 
                           width: '210px',
                           height:'34px',
+                          fontFamily:'Arimo'
                         }}
                       /> <br>
                       </br>
@@ -167,13 +168,13 @@ function App() {
                           marginBottom: '12px',
                           fontSize: '14px', 
                           width: '210px',
-                          height:'34px' 
+                          height:'34px' ,
+                          fontFamily:'Arimo'
                         }}/>
                     
                     <DialogActions>
-                      <Button variant='contained' color='success' onClick={handleClose} sx={{width:'20px'}}>Add</Button>
-                      <Button variant='contained' color="error" onClick={handleClose}>Cancel</Button>
-                      
+                      <Button variant='contained' color='success' onClick={handleClose} sx={{height:'5vh'}}>Add</Button>
+                      <Button variant='contained' color="error" onClick={handleClose} sx={{height:'5vh'}}>Cancel</Button>
                     </DialogActions>
                     </DialogContent>
                   </Dialog>
