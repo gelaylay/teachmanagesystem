@@ -11,12 +11,12 @@ import SubjectArea from './subjectArea'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
-  <Routes>
-    <Route path="/teachmanage" element={<FirstPage />} />
-     <Route path="/signin_signup" element={<UserAuthen />} />
-     <Route path ="/subject_area" element={<SubjectArea/>}/>
-  </Routes>
-</Router>
+    <Routes>
+      <Route path="/teachmanage" element={<FirstPage />} />
+      <Route path="/signin_signup" element={<UserAuthen />} />
+      <Route path ="/subject_area/:username" element={<SubjectArea/>}/>
+    </Routes>
+  </Router>
   // <React.StrictMode>
   //   <App />
   // </React.StrictMode>

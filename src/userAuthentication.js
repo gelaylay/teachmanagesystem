@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { Box, Button, Grid, Tab, Typography,} from '@mui/material';
 import TabPanel from '@mui/lab/TabPanel';
 import './style.css';
@@ -63,7 +63,7 @@ async function createNewUser(event) {
 
       if (isUsernameUnique) {
         if(validatePassword(newPassword)){
-        const response = await fetch('http://localhost:8080/user/createAccount', {
+        const response = await fetch('http://localhost:8080/api/user/createAccount', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ async function createNewUser(event) {
 
         if (response.ok) {
           // Redirect to the subject_area after successful account creation
-          navigate('/subject_area');
+          navigate(`/subject_area/${newUsername}`);
         } else {
           // Handle error scenarios
           console.error('Account creation failed');
@@ -99,7 +99,7 @@ async function createNewUser(event) {
 
 async function checkUsernameUniqueness(username) {
   try {
-    const response = await fetch(`http://localhost:8080/user/checkUsername?username=${username}`);
+    const response = await fetch(`http://localhost:8080/api/user/checkUsername?username=${username}`);
 
     if (response.ok) {
       const data = await response.json();
@@ -124,7 +124,7 @@ async function signIn(event) {
   if (username && password) {
     try {
       // Assuming you have an endpoint for user authentication
-      const response = await fetch('http://localhost:8080/user/signIn', {
+      const response = await fetch('http://localhost:8080/api/user/signIn', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ async function signIn(event) {
 
       if (response.ok) {
         // Redirect to the subject_area after successful sign-in
-        navigate('/subject_area');
+        navigate(`/subject_area/${username}`);
       } else {
         setIsUsernameAndPasswordCorrect(false);
       }

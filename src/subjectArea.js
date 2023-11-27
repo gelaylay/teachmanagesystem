@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState,useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import { Box, AppBar,Toolbar,IconButton,Typography,Grid, Button, Paper, Dialog, DialogContent,  DialogActions, Chip, Avatar} from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
@@ -9,13 +10,56 @@ import FolderIcon from '@mui/icons-material/Folder';
 
 import './style.css';
 
-function App() {
-  const [open, setOpen] = React.useState(false);
+function SubjectArea() {
+ 
+  const {username} = useParams();
+  console.log("username: ",username);
+ const [open, setOpen] = useState(false);
+  const [subjectCode, setSubjectCode] = useState('');
+  const [subjectName, setSubjectName] = useState('');
+  const [subjectFolders, setSubjectFolders] = useState([]);
+
+  useEffect(() => {
+    // Add your API call to fetch subject folders based on the user
+    // For example:
+    fetch(`http://localhost:8080/api/subjectArea/getAllFolders?username=${username}`)
+      .then(response => response.json())
+      .then(data => setSubjectFolders(data))
+      .catch(error => console.error('Error fetching subject folders:', error));
+  }, [username]);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
+  const handleAddSubject = () => {
+    fetch('http://localhost:8080/api/subjectArea/addFolder', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        subcode: subjectCode,
+        subname: subjectName,
+        user: {
+          uname: username // Use uname or a default value
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        alert('Subject added successfully:', data);
+        console.log("subcode:", subjectCode);
+        console.log("subname:", subjectName);
+        // Add any additional logic or UI updates as needed
+        handleClose();
+      })
+      .catch((error) => {
+        console.error('Error adding subject:', error);
+      });
+  };
+  
+  
   const handleClose = () => {
     setOpen(false);
   };
@@ -78,7 +122,7 @@ function App() {
                     sx={{ mr: 1, }}
                   >
                     <img
-                      src="Images/logo.png"
+                      src="/Images/logo.png"
                       height="55px"
                       alt="logo"
                     />
@@ -150,6 +194,8 @@ function App() {
                       <Chip icon={<FolderIcon />} label="Add New Subject" sx={{padding:'20px', fontSize:'14px', bgcolor:'#359DD9', fontFamily:'WorkSans'}} />
                   </Stack>
                       <input  
+                        value ={subjectCode}
+                        onChange={(e)=>setSubjectCode(e.target.value)}
                         variant="outlined" 
                         placeholder='Subject Code'
                         style={{
@@ -162,6 +208,8 @@ function App() {
                       /> <br>
                       </br>
                       <input  
+                       value ={subjectName}
+                       onChange={(e)=>setSubjectName(e.target.value)}
                         variant="outlined" 
                         placeholder='Subject Name'
                         style={{
@@ -173,7 +221,7 @@ function App() {
                         }}/>
                     
                     <DialogActions>
-                      <Button variant='contained' color='success' onClick={handleClose} sx={{height:'5vh'}}>Add</Button>
+                      <Button variant='contained' color='success' onClick={handleAddSubject} sx={{height:'5vh'}}>Add</Button>
                       <Button variant='contained' color="error" onClick={handleClose} sx={{height:'5vh'}}>Cancel</Button>
                     </DialogActions>
                     </DialogContent>
@@ -193,9 +241,35 @@ function App() {
             </Grid>
             </Paper>
           </Grid>
-          <Grid item xs={12} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <Paper elevation={8} sx={{bgcolor:'rgba(53, 157, 217, 0.4)',height:'79vh',width:'160vh', display:'center',justifyContent:'center',alignItems:'center', borderRadius:'1vh'}}>
-            {/* for folders  */}
+          <Grid item xs={12} sx={{display: 'flex', justifyContent: 'center', alignItems: 'center',}}>
+            <Paper elevation={8} sx={{bgcolor:'rgba(53, 157, 217, 0.4)',height:'79vh',width:'160vh', display:'center',justifyContent:'center',alignItems:'center', borderRadius:'1vh', overflowY: 'auto'}}>
+            {/* for folders  */} 
+              <Grid container spacing={2} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center',mt:'10vh', }}>
+                {subjectFolders.map(folder=>
+                  
+                <Grid key={folder.id} item xs={2.5} sx={{height: '30vh',display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                  <Grid container spacing={1} >
+                    <Grid item xs={12} sx={{ display: 'flex',justifyContent:'center'}}>
+                      <Box sx={{ display: 'flex',justifyContent:'center', alignItems:'center'}}>
+                        <img
+                            src="/Images/folder.png"
+                            style={{
+                              width: '72%',
+                
+                            }}
+                            alt="folder"
+                        />
+                      </Box>
+
+                    </Grid>
+                    <Grid item xs={12} sx={{ display: 'flex',justifyContent:'center'}}>
+                    {folder.subname}
+                    </Grid>
+                  </Grid>
+                </Grid>
+                )}
+              </Grid>
+
             </Paper>
           </Grid>
         </Grid>
@@ -204,4 +278,4 @@ function App() {
   );
 }
 
-export default App;
+export default SubjectArea;
